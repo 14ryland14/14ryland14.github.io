@@ -73,6 +73,16 @@
             padding-bottom: 5px;
             margin-bottom: 20px;
         }
+        .personal-statement {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #1a1a2e;
+            background-color: #ffffff;
+            padding: 20px;
+            border-left: 5px solid #00adb5;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
         .skills-list {
             display: flex;
             flex-wrap: wrap;
@@ -96,6 +106,9 @@
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .project-card:hover {
             transform: translateY(-5px);
@@ -103,6 +116,29 @@
         .project-card h3 {
             margin-bottom: 10px;
             color: #1a1a2e;
+        }
+        .project-card p {
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        .project-links {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .project-links a {
+            text-decoration: none;
+            color: #00adb5;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: 1px solid #00adb5;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .project-links a:hover {
+            background-color: #00adb5;
+            color: #fff;
         }
         footer {
             background-color: #1a1a2e;
@@ -117,6 +153,7 @@
 
     <header>
         <div class="profile-container">
+            <!-- Ensure this image file exists in your repository folder, or replace with a relative path -->
             <img src="Rutgers ID .jpg" alt="Profile Picture" class="profile-img">
         </div>
         <h1>Your Name</h1>
@@ -124,47 +161,68 @@
     </header>
 
     <nav>
-        <a href="#about">About</a>
+        <a href="#about">Personal Statement</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </nav>
 
     <div class="container">
+        <!-- Personal Statement Section -->
         <section id="about">
-            <h2>About Me</h2>
-            <p>Hello! I am a passionate creator building clean, accessible, and high-performing web applications. I turn ideas into digital experiences through code and design.</p>
+            <h2>Personal Statement</h2>
+            <p class="personal-statement">
+                I am a dedicated software engineering student with a strong background in web development, driven to build intuitive, scalable, and impactful digital solutions for real-world challenges.
+            </p>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills">
             <h2>Skills</h2>
             <ul class="skills-list">
-                <li>HTML5</li>
-                <li>CSS3 & Flexbox/Grid</li>
-                <li>JavaScript</li>
-                <li>Responsive Design</li>
+                <li>HTML5 & CSS3</li>
+                <li>JavaScript (ES6+)</li>
+                <li>Responsive Web Design</li>
                 <li>Git & GitHub</li>
+                <li>UI/UX Prototyping</li>
+                <li>Problem Solving</li>
             </ul>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects">
             <h2>Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>Project One</h3>
-                    <p>A web application that helps users track their daily habits and set productivity goals.</p>
+                    <h3>Habit Tracker App</h3>
+                    <p>A responsive web application that enables users to record daily habits, track streaks, and visualize progress through custom goal analytics.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/habit-tracker" target="_blank" rel="noopener noreferrer">Source Code</a>
+                        <a href="https://yourusername.github.io/habit-tracker" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </div>
                 </div>
+
                 <div class="project-card">
-                    <h3>Project Two</h3>
-                    <p>E-commerce storefront UI built with responsive layout components and modern CSS.</p>
+                    <h3>E-Commerce UI Storefront</h3>
+                    <p>A modernized e-commerce landing page featuring custom CSS Grid layouts, interactive product filtration, and dynamic navigation.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/ecommerce-ui" target="_blank" rel="noopener noreferrer">Source Code</a>
+                        <a href="https://yourusername.github.io/ecommerce-ui" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </div>
                 </div>
+
                 <div class="project-card">
-                    <h3>Project Three</h3>
-                    <p>Interactive dashboard visualizing weather data using public APIs.</p>
+                    <h3>Weather Analytics Dashboard</h3>
+                    <p>An interactive dashboard built with JavaScript that pulls real-time temperature data via public APIs and dynamically updates dynamic visual charts.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/weather-dashboard" target="_blank" rel="noopener noreferrer">Source Code</a>
+                        <a href="https://yourusername.github.io/weather-dashboard" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact">
             <h2>Contact Me</h2>
             <p>Feel free to reach out for collaborations or project inquiries!</p>
