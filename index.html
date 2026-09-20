@@ -3,52 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>My Portfolio</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #212529;
         }
         header {
-            background: #35424a;
-            color: #ffffff;
-            padding: 20px 0;
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 60px 20px;
             text-align: center;
         }
-        main {
+        .profile-container {
+            margin-bottom: 20px;
+        }
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00adb5;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #00adb5;
+        }
+        nav {
+            background-color: #16213e;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #00adb5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        h2 {
+            border-bottom: 3px solid #00adb5;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+        }
+        .skills-list li {
+            background-color: #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background: #fff;
             padding: 20px;
-            max-width: 800px;
-            margin: 20px auto;
-            background: #ffffff;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card h3 {
+            margin-bottom: 10px;
+            color: #1a1a2e;
         }
         footer {
+            background-color: #1a1a2e;
+            color: #888;
             text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #666;
+            padding: 20px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Welcome to My Website</h1>
+        <div class="profile-container">
+            <!-- Replace 'profile-photo.jpg' with your image path -->
+            <img src="profile-photo.jpg" alt="Your Name" class="profile-img">
+        </div>
+        <h1>Your Name</h1>
+        <p>Web Developer & Designer</p>
     </header>
 
-    <main>
-        <h2>About This Page</h2>
-        <p>This is a standard starter template. You can customize the content inside the body tag to build out your web page.</p>
-    </main>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I am a passionate creator building clean, accessible, and high-performing web applications. I turn ideas into digital experiences through code and design.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li>HTML5</li>
+                <li>CSS3 & Flexbox/Grid</li>
+                <li>JavaScript</li>
+                <li>Responsive Design</li>
+                <li>Git & GitHub</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Project One</h3>
+                    <p>A web application that helps users track their daily habits and set productivity goals.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Project Two</h3>
+                    <p>E-commerce storefront UI built with responsive layout components and modern CSS.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Project Three</h3>
+                    <p>Interactive dashboard visualizing weather data using public APIs.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out for collaborations or project inquiries!</p>
+            <p style="margin-top: 10px;"><strong>Email:</strong> your.email@example.com</p>
+        </section>
+    </div>
 
     <footer>
-        <p>&copy; 2026 My Web Page</p>
+        <p>&copy; 2026 Your Name. All rights reserved.</p>
     </footer>
 
 </body>
