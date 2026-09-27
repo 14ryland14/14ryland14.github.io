@@ -3,149 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Ryland Mishura - Portfolio</title>
     <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #00adb5;
+            --accent-hover: #008c93;
+            --bg-light: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --border-color: #e9ecef;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #f8f9fa;
-            color: #212529;
+
+        html {
+            scroll-behavior: smooth;
         }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* Header & Profile */
         header {
-            background-color: #1a1a2e;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #fff;
-            padding: 60px 20px;
+            padding: 60px 20px 40px;
             text-align: center;
         }
+
         .profile-container {
             margin-bottom: 20px;
         }
+
         .profile-img {
             width: 160px;
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #00adb5;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 4px solid var(--accent);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
         }
+
+        .profile-img:hover {
+            transform: scale(1.03);
+        }
+
         header h1 {
             font-size: 2.5rem;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
-        header p {
-            font-size: 1.2rem;
-            color: #00adb5;
+
+        header p.subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 600;
         }
+
+        header p.major {
+            font-size: 1.05rem;
+            color: #d1d5db;
+            margin-top: 4px;
+        }
+
+        /* Sticky Navigation */
         nav {
-            background-color: #16213e;
-            padding: 15px;
+            background-color: var(--secondary);
+            padding: 15px 20px;
             text-align: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
         }
+
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
+            margin: 0 18px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            display: inline-block;
         }
+
         nav a:hover {
-            color: #00adb5;
+            color: var(--accent);
         }
+
+        /* Container Layout */
         .container {
             max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
         }
+
         section {
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
+
         h2 {
-            border-bottom: 3px solid #00adb5;
+            font-size: 1.8rem;
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
             display: inline-block;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
+            padding-bottom: 6px;
+            margin-bottom: 25px;
         }
+
+        /* Personal Statement */
         .personal-statement {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 500;
-            color: #1a1a2e;
-            background-color: #ffffff;
-            padding: 20px;
-            border-left: 5px solid #00adb5;
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            color: var(--primary);
+            background-color: var(--card-bg);
+            padding: 24px 28px;
+            border-left: 6px solid var(--accent);
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            line-height: 1.7;
         }
+
+        /* Skills List */
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
             list-style: none;
         }
+
         .skills-list li {
-            background-color: #e2e8f0;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 500;
+            background-color: #ffffff;
+            color: var(--primary);
+            border: 1px solid #cbd5e1;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s ease;
         }
+
+        .skills-list li:hover {
+            background-color: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 30px;
         }
+
         .project-card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
+
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
+
         .project-card h3 {
-            margin-bottom: 10px;
-            color: #1a1a2e;
-        }
-        .project-card p {
+            font-size: 1.5rem;
             margin-bottom: 15px;
+            color: var(--primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .project-link-box {
+            background-color: #f1f5f9;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            word-break: break-all;
+            font-size: 0.95rem;
+        }
+
+        .project-link-box a {
+            color: var(--accent);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .project-link-box a:hover {
+            text-decoration: underline;
+        }
+
+        .project-body {
+            color: var(--text-dark);
             flex-grow: 1;
         }
+
+        .project-body h4 {
+            font-size: 1.15rem;
+            color: var(--secondary);
+            margin: 20px 0 10px 0;
+        }
+
+        .project-body p {
+            margin-bottom: 12px;
+        }
+
+        .project-body ul, .project-body ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .project-body li {
+            margin-bottom: 6px;
+        }
+
         .project-links {
             display: flex;
-            gap: 10px;
-            margin-top: auto;
+            gap: 12px;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
         }
+
         .project-links a {
             text-decoration: none;
-            color: #00adb5;
+            color: var(--accent);
             font-weight: bold;
             font-size: 0.9rem;
-            border: 1px solid #00adb5;
-            padding: 6px 12px;
-            border-radius: 4px;
+            border: 2px solid var(--accent);
+            padding: 8px 18px;
+            border-radius: 6px;
             transition: background-color 0.2s, color 0.2s;
+            display: inline-block;
         }
+
         .project-links a:hover {
-            background-color: #00adb5;
+            background-color: var(--accent);
             color: #fff;
         }
+
+        /* Contact Section */
+        .contact-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item strong {
+            width: 120px;
+            color: var(--primary);
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
         footer {
-            background-color: #1a1a2e;
-            color: #888;
+            background-color: var(--primary);
+            color: #a0aec0;
             text-align: center;
-            padding: 20px;
+            padding: 25px 20px;
             font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            nav a {
+                margin: 0 8px;
+                font-size: 0.85rem;
+            }
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .contact-item strong {
+                margin-bottom: 2px;
+            }
         }
     </style>
 </head>
@@ -154,11 +330,11 @@
     <header>
         <div class="profile-container">
             <!-- Ensure this image file exists in your repository folder, or replace with a relative path -->
-            <img src="Rutgers ID .jpg" alt="Profile Picture" class="profile-img">
+            <img src="Rutgers ID .jpg" alt="Ryland Mishura" class="profile-img">
         </div>
         <h1>Ryland Mishura</h1>
-        <p>Rutgers Business Student</p>
-        <p>Supply Chain Mangement Major & BAIT Concentration</p>
+        <p class="subtitle">Rutgers Business Student</p>
+        <p class="major">Supply Chain Management Major & BAIT Concentration</p>
     </header>
 
     <nav>
@@ -197,132 +373,152 @@
 
         <!-- Projects Section -->
         <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-        
-        <div class="project-card">
-            <h3>Scarlet Swap Project</h3>
-            <p><strong>Link: https://docs.google.com/document/d/1U8MjnPCupo9rxC-MK5JbLGBPSXFlqpExKT_7kkSg1jI/edit?usp=sharing</strong> This presentation introduces **Scarlet Swap**, a proposed campus-centric peer-to-peer platform designed for Rutgers students to buy, sell, or trade items locally.
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <h3>Scarlet Swap Project</h3>
+                    <div class="project-link-box">
+                        <strong>Link:</strong> <a href="https://docs.google.com/document/d/1U8MjnPCupo9rxC-MK5JbLGBPSXFlqpExKT_7kkSg1jI/edit?usp=sharing" target="_blank" rel="noopener noreferrer">https://docs.google.com/document/d/1U8MjnPCupo9rxC-MK5JbLGBPSXFlqpExKT_7kkSg1jI/edit?usp=sharing</a>
+                    </div>
+                    <div class="project-body">
+                        <p>This presentation introduces <strong>Scarlet Swap</strong>, a proposed campus-centric peer-to-peer platform designed for Rutgers students to buy, sell, or trade items locally.</p>
+                        
+                        <h4>Core Business Concept & Value Proposition</h4>
+                        <ul>
+                            <li><strong>Mission:</strong> To establish a peer-to-peer eco-friendly economy at Rutgers by enabling students to buy, sell, or swap items directly on campus.</li>
+                            <li><strong>Value Proposition:</strong> Focuses on campus convenience (walking distance transactions without shipping fees), realistic student pricing, sustainability (reducing waste), community connection, and hands-on learning in entrepreneurship and eco-responsibility.</li>
+                            <li><strong>Vision & Values:</strong> Aims to create an accessible campus platform while prioritizing eco-friendliness, community trust, inclusivity, and integrity.</li>
+                        </ul>
 
----
+                        <h4>Business Strategy & Goals</h4>
+                        <ul>
+                            <li><strong>Financial Objectives:</strong> Targets reduced operational costs, $5,000 in seed funding for marketing and app development, and achieving positive cash flow within two semesters.</li>
+                            <li><strong>Strategic & CSR Objectives:</strong> Focuses on active user growth, community participation, tracking swapping metrics to measure environmental impact, offering a community credit program, and forming an ethics board.</li>
+                            <li><strong>Expansion & Global Strategy:</strong>
+                                <ul>
+                                    <li><strong>National:</strong> Plans to build a solid campus footprint before expanding to similar university demographics.</li>
+                                    <li><strong>Global:</strong> Evaluates international markets such as Canada due to strong campus networks and eco-conscious trends.</li>
+                                </ul>
+                            </li>
+                        </ul>
 
-### Core Business Concept & Value Proposition
+                        <h4>Operations, Staffing & Key Processes</h4>
+                        <ul>
+                            <li><strong>New Service:</strong> Highlights "Scarlet Swap Delivery Service" for local, on-campus transport of bulky goods.</li>
+                            <li><strong>Human Resources & Employee Engagement:</strong> Outlines job roles (e.g., Operations Manager), compensation models, recognition programs, flexible scheduling, and clear team communication practices.</li>
+                            <li><strong>Process & Effectiveness:</strong> Uses SIPOC mapping (Suppliers, Inputs, Process, Outputs, Customers) and tracks efficiency indicators like cost per swap and user engagement rates.</li>
+                            <li><strong>Acquisition/Sell Decision:</strong> Recommends keeping ownership ("No Sell") to protect company values, employee interests, and long-term sustainability rather than selling to an outside buyer.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#contact">Contact for Details</a>
+                    </div>
+                </div>
 
-* **Mission:** To establish a peer-to-peer eco-friendly economy at Rutgers by enabling students to buy, sell, or swap items directly on campus.
-* **Value Proposition:** Focuses on campus convenience (walking distance transactions without shipping fees), realistic student pricing, sustainability (reducing waste), community connection, and hands-on learning in entrepreneurship and eco-responsibility.
-* **Vision & Values:** Aims to create an accessible campus platform while prioritizing eco-friendliness, community trust, inclusivity, and integrity.
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <h3>The North Face Demand Planning Project</h3>
+                    <div class="project-link-box">
+                        <strong>Link:</strong> <a href="https://1drv.ms/p/c/c6ed12fa43381052/IQCD27aBsloeTKCna8Tqf9aNAYPoD-oJFMRYazK3FIidoR4?e=fPniLT" target="_blank" rel="noopener noreferrer">https://1drv.ms/p/c/c6ed12fa43381052/IQCD27aBsloeTKCna8Tqf9aNAYPoD-oJFMRYazK3FIidoR4?e=fPniLT</a>
+                    </div>
+                    <div class="project-body">
+                        <p>This presentation offers a supply chain analysis focused on <strong>The North Face</strong> and its management of safety stock amidst volatile weather-driven demand.</p>
 
----
+                        <h4>Brand Context & Problem Statement</h4>
+                        <ul>
+                            <li><strong>Overview:</strong> Founded in 1966 and acquired by VF Corporation in 2000, The North Face relies on 3rd-party independent factories with long lead times (14–15 months).</li>
+                            <li><strong>Core Challenge:</strong> Revenue is heavily concentrated in cold-weather seasons (Fall/Winter), making sales vulnerable to unpredictable, weather-driven demand fluctuations.</li>
+                            <li><strong>Central Question:</strong> How can The North Face optimize safety stock levels across all four seasons under volatile winter demand without causing stockouts or excess inventory, while maintaining a target 95% fill rate?</li>
+                        </ul>
 
-### Business Strategy & Goals
+                        <h4>Key Findings & Data Insights</h4>
+                        <ul>
+                            <li><strong>Demand Characteristics:</strong> Winter apparel dominates revenues. Volatility from short, intense weather events increases forecasting variance, giving rise to potential bullwhip effects and high obsolescence risks.</li>
+                            <li><strong>Service Level & Inventory Metrics:</strong> The company targets a 95% service level ($CSL$). Because winter sales windows are short, minor forecasting errors non-linearly amplify safety stock requirements.</li>
+                            <li><strong>Safety Stock Sensitivity:</strong> Under mild winter conditions, a baseline safety stock is needed; however, average winters require up to 8x baseline, and severe winters require up to 13x baseline safety stock.</li>
+                            <li><strong>Supply Constraints:</strong> Long push-based lead times (14–15 months) limit real-time flexibility to adjust production based on actual weather signals.</li>
+                        </ul>
 
-* **Financial Objectives:** Targets reduced operational costs, $5,000 in seed funding for marketing and app development, and achieving positive cash flow within two semesters.
-* **Strategic & CSR Objectives:** Focuses on active user growth, community participation, tracking swapping metrics to measure environmental impact, offering a community credit program, and forming an ethics board.
-* **Expansion & Global Strategy:**
-* **National:** Plans to build a solid campus footprint before expanding to similar university demographics.
-* **Global:** Evaluates international markets such as Canada due to strong campus networks and eco-conscious trends.
+                        <h4>Strategic Recommendations</h4>
+                        <ol>
+                            <li><strong>Strengthen S&OP with Weather Scenarios:</strong> Integrate monthly Sales and Operations Planning (S&OP) with weather forecast scenarios to align merchandising, marketing, and supply chain teams.</li>
+                            <li><strong>Hybrid Planning for Outerwear:</strong> Combine early base-season production overseas with near-shore or quick-turn capacity for mid-season reorders during demand spikes.</li>
+                            <li><strong>ABC Inventory Segmentation:</strong> Maintain higher safety stock for core, high-revenue products (A-items) while holding leaner levels for trend-based items.</li>
+                            <li><strong>Dynamic Safety Stock Adjustments:</strong> Adjust safety buffer levels based on updated forecast confidence intervals throughout the season.</li>
+                        </ol>
+                    </div>
+                    <div class="project-links">
+                        <a href="#contact">Contact for Details</a>
+                    </div>
+                </div>
 
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <h3>Reverse Supply Chain Research Project</h3>
+                    <div class="project-link-box">
+                        <strong>Link:</strong> <a href="https://rutgersconnect-my.sharepoint.com/:p:/g/personal/tr602_scarletmail_rutgers_edu/IQBl_iY_Cj0kS6irt2mRsvH4ASso_3Ch3lygQtxWNwwyPfM?e=lkaohF" target="_blank" rel="noopener noreferrer">https://rutgersconnect-my.sharepoint.com/:p:/g/personal/tr602_scarletmail_rutgers_edu/IQBl_iY_Cj0kS6irt2mRsvH4ASso_3Ch3lygQtxWNwwyPfM?e=lkaohF</a>
+                    </div>
+                    <div class="project-body">
+                        <p>This presentation provides an in-depth analysis of <strong>Reverse Logistics and the Circular Economy</strong>, detailing how businesses manage products after sale to reduce waste and recover value.</p>
 
+                        <h4>Definition & Role in the Circular Economy</h4>
+                        <ul>
+                            <li><strong>Reverse Logistics Definition:</strong> The movement of goods backward through the supply chain from the end consumer to the seller or manufacturer. It encompasses returns, repairs, recycling, refurbishing, and disposal.</li>
+                            <li><strong>Circular Economy Shift:</strong> Transitions traditional supply chains from a "take, make, dispose" linear model to a closed-loop system where materials are kept in use as long as possible.</li>
+                        </ul>
 
----
+                        <h4>Key Benefits</h4>
+                        <ul>
+                            <li><strong>Cost Reduction:</strong> Cuts raw material expenses by reusing/remanufacturing components and reducing overall waste disposal costs.</li>
+                            <li><strong>Enhanced Feedback & Efficiency:</strong> Provides backup inventory via recovered parts, speeds up repair cycles, and uses return data to improve product design.</li>
+                            <li><strong>Sustainability & Compliance:</strong> Helps companies reduce carbon emissions, align with government regulatory goals, and build brand reputation.</li>
+                        </ul>
 
-### Operations, Staffing & Key Processes
+                        <h4>Operational & Strategic Challenges</h4>
+                        <ul>
+                            <li><strong>Operational & Technical:</strong> High handling and logistics costs, lack of dedicated return storage, uncertain return conditions, and complex tracking inventory systems.</li>
+                            <li><strong>Market & Financial:</strong> Limited funding, low customer awareness/participation rates, and negative perception surrounding second-hand or refurbished products.</li>
+                            <li><strong>Real-World Company Hurdles:</strong> Examines challenges faced by brands like IKEA (buy-back logistics), Apple (high recycling resource costs), and Lululemon ("Like New" trade-in handling).</li>
+                        </ul>
 
-* **New Service:** Highlights "Scarlet Swap Delivery Service" for local, on-campus transport of bulky goods.
-* **Human Resources & Employee Engagement:** Outlines job roles (e.g., Operations Manager), compensation models, recognition programs, flexible scheduling, and clear team communication practices.
-* **Process & Effectiveness:** Uses SIPOC mapping (Suppliers, Inputs, Process, Outputs, Customers) and tracks efficiency indicators like cost per swap and user engagement rates.
-* **Acquisition/Sell Decision:** Recommends keeping ownership ("No Sell") to protect company values, employee interests, and long-term sustainability rather than selling to an outside buyer.</p>
-            <div class="project-links">
-                <a href="#contact">Contact for Details</a>
+                        <h4>Real-World Case Studies & Recommendations</h4>
+                        <ul>
+                            <li><strong>Case Studies:</strong> Highlights Patagonia's <em>Worn Wear</em> program (repairing and reselling used gear) and Nike's <em>Move to Zero</em> initiative (transforming waste into recycled performance products).</li>
+                            <li><strong>Strategic Recommendations:</strong> Advises collaborating with suppliers, collecting return data for continuous learning, regularly reviewing logistics processes, using cloud-based software, and integrating Artificial Intelligence, Robotics, and Blockchain technology.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">View Repository</a>
+                    </div>
+                </div>
+
             </div>
-        </div>
-
-        <div class="project-card">
-            <h3>The North Face Demand Planning Project</h3>
-            <p><strong>Link: https://1drv.ms/p/c/c6ed12fa43381052/IQCD27aBsloeTKCna8Tqf9aNAYPoD-oJFMRYazK3FIidoR4?e=fPniLT</strong> This presentation offers a supply chain analysis focused on **The North Face** and its management of safety stock amidst volatile weather-driven demand.
-
----
-
-### Brand Context & Problem Statement
-
-* **Overview:** Founded in 1966 and acquired by VF Corporation in 2000, The North Face relies on 3rd-party independent factories with long lead times (14–15 months).
-* **Core Challenge:** Revenue is heavily concentrated in cold-weather seasons (Fall/Winter), making sales vulnerable to unpredictable, weather-driven demand fluctuations.
-* **Central Question:** How can The North Face optimize safety stock levels across all four seasons under volatile winter demand without causing stockouts or excess inventory, while maintaining a target 95% fill rate?
-
----
-
-### Key Findings & Data Insights
-
-* **Demand Characteristics:** Winter apparel dominates revenues. Volatility from short, intense weather events increases forecasting variance, giving rise to potential bullwhip effects and high obsolescence risks.
-* **Service Level & Inventory Metrics:** The company targets a 95% service level ($CSL$). Because winter sales windows are short, minor forecasting errors non-linearly amplify safety stock requirements.
-* **Safety Stock Sensitivity:** Under mild winter conditions, a baseline safety stock is needed; however, average winters require up to 8x baseline, and severe winters require up to 13x baseline safety stock.
-* **Supply Constraints:** Long push-based lead times (14–15 months) limit real-time flexibility to adjust production based on actual weather signals.
-
----
-
-### Strategic Recommendations
-
-1. **Strengthen S&OP with Weather Scenarios:** Integrate monthly Sales and Operations Planning (S&OP) with weather forecast scenarios to align merchandising, marketing, and supply chain teams.
-2. **Hybrid Planning for Outerwear:** Combine early base-season production overseas with near-shore or quick-turn capacity for mid-season reorders during demand spikes.
-3. **ABC Inventory Segmentation:** Maintain higher safety stock for core, high-revenue products (A-items) while holding leaner levels for trend-based items.
-4. **Dynamic Safety Stock Adjustments:** Adjust safety buffer levels based on updated forecast confidence intervals throughout the season.</p>
-            <div class="project-links">
-                <a href="#contact">Contact for Details</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <h3>Reverse Supply Chain Research Proejct</h3>
-            <p><strong>Link: https://rutgersconnect-my.sharepoint.com/:p:/g/personal/tr602_scarletmail_rutgers_edu/IQBl_iY_Cj0kS6irt2mRsvH4ASso_3Ch3lygQtxWNwwyPfM?e=lkaohF</strong> This presentation provides an in-depth analysis of **Reverse Logistics and the Circular Economy**, detailing how businesses manage products after sale to reduce waste and recover value.
-
----
-
-### Definition & Role in the Circular Economy
-
-* **Reverse Logistics Definition:** The movement of goods backward through the supply chain from the end consumer to the seller or manufacturer. It encompasses returns, repairs, recycling, refurbishing, and disposal.
-* **Circular Economy Shift:** Transitions traditional supply chains from a "take, make, dispose" linear model to a closed-loop system where materials are kept in use as long as possible.
-
----
-
-### Key Benefits
-
-* **Cost Reduction:** Cuts raw material expenses by reusing/remanufacturing components and reducing overall waste disposal costs.
-* **Enhanced Feedback & Efficiency:** Provides backup inventory via recovered parts, speeds up repair cycles, and uses return data to improve product design.
-* **Sustainability & Compliance:** Helps companies reduce carbon emissions, align with government regulatory goals, and build brand reputation.
-
----
-
-### Operational & Strategic Challenges
-
-* **Operational & Technical:** High handling and logistics costs, lack of dedicated return storage, uncertain return conditions, and complex tracking inventory systems.
-* **Market & Financial:** Limited funding, low customer awareness/participation rates, and negative perception surrounding second-hand or refurbished products.
-* **Real-World Company Hurdles:** Examines challenges faced by brands like IKEA (buy-back logistics), Apple (high recycling resource costs), and Lululemon ("Like New" trade-in handling).
-
----
-
-### Real-World Case Studies & Recommendations
-
-* **Case Studies:** Highlights Patagonia's *Worn Wear* program (repairing and reselling used gear) and Nike's *Move to Zero* initiative (transforming waste into recycled performance products).
-* **Strategic Recommendations:** Advises collaborating with suppliers, collecting return data for continuous learning, regularly reviewing logistics processes, using cloud-based software, and integrating Artificial Intelligence, Robotics, and Blockchain technology.</p>
-            <div class="project-links">
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">View Repository</a>
-            </div>
-        </div>
-
-    </div>
-</section>
+        </section>
 
         <!-- Contact Section -->
         <section id="contact">
             <h2>Contact Me</h2>
-            <p style="margin-top: 10px;"><strong>Email:</strong> ryland.mishura@gmail.com</p>
-             <p style="margin-top: 10px;"><strong>Phone:</strong> 856-305-9776</p>
-             <p style="margin-top: 10px;"><strong>Linkedin link</strong> https://www.linkedin.com/in/ryland-mishura-supply-chain/</p>
+            <div class="contact-card">
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <a href="mailto:ryland.mishura@gmail.com">ryland.mishura@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone:</strong>
+                    <span>856-305-9776</span>
+                </div>
+                <div class="contact-item">
+                    <strong>LinkedIn:</strong>
+                    <a href="https://www.linkedin.com/in/ryland-mishura-supply-chain/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/ryland-mishura-supply-chain/</a>
+                </div>
+            </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 Your Name. All rights reserved.</p>
+        <p>&copy; 2026 Ryland Mishura. All rights reserved.</p>
     </footer>
 
 </body>
